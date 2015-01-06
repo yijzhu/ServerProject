@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="DAO.EmployeeDao">
+    <select id="findByEmployeeID" parameterType="String" resultType="model.Employee">
+        select * from test_tb where id=#{id}
+    </select>
+    
+    <select id="getAllEmployee" resultType="model.Employee">
+        select * from test_tb
+    </select>
+    
+    <update id="updateEmployee" parameterType="model.Employee">  
+        update test_tb set name=#{name}, gender=#{gender} where id=#{id}  
+    </update>  
+    
+    <insert id="insertEmployee" parameterType="model.Employee" useGeneratedKeys="true" keyProperty="id">  
+        insert into test_tb (name, gender) values (#{name}, #{gender})  
+    </insert>  
+    
+    <delete id="deleteEmployee" parameterType="int">  
+        delete from test_tb where id = #{id}  
+    </delete> 
+</mapper>
